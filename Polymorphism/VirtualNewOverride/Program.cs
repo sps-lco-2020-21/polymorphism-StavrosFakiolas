@@ -7,11 +7,14 @@ namespace VirtualNewOverride
     class Program
     {
         // based on the example here: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/knowing-when-to-use-override-and-new-keywords 
-        static void Main(string[] args)
+        static void Main()
         {
             // START OF TEST SECTION FOR PERSON
 
+            Console.WriteLine(2014 % 12);
+            
             DateTime myBirthday = new DateTime(2004, 3, 16);
+            DateTime myBirthdayOlder = new DateTime(1990, 3, 16);
             Person me = new Person("Stavros", "Fakiolas", myBirthday, "Poggers@gmail.com");
             Console.WriteLine(me.Valid);
             Console.WriteLine(me.Adult);
@@ -19,8 +22,8 @@ namespace VirtualNewOverride
 
             Console.ReadKey();
 
-            Student meButStudent = new Student("Stavros", "Fakiolas", myBirthday, "HatsuneMiku@gmail.com", "Y12");
-            Teacher meButTeacher = new Teacher("Stavros", "Fakiolas", myBirthday, "Eurobeat@gmail.com", "Pain and Suffering");
+            Student meButStudent = new Student("Stavros", "Fakiolas", myBirthday, "HatsuneMiku@gmail.com", "12");
+            Teacher meButTeacher = new Teacher("Stavros", "Fakiolas", myBirthdayOlder, "Eurobeat@gmail.com", "Pain and Suffering");
 
 
             Console.ReadKey();
