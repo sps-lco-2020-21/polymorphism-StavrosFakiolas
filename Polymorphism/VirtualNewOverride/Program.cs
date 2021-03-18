@@ -7,8 +7,36 @@ namespace VirtualNewOverride
     class Program
     {
         // based on the example here: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/knowing-when-to-use-override-and-new-keywords 
-        static void Main(string[] args)
+        static void Main()
         {
+            // START OF TEST SECTION FOR PERSON
+
+            Console.WriteLine(2014 % 12);
+            
+            DateTime myBirthday = new DateTime(2004, 3, 16);
+            DateTime myBirthdayOlder = new DateTime(1990, 3, 16);
+            Person me = new Person("Stavros", "Fakiolas", myBirthday, "Poggers@gmail.com");
+            Console.WriteLine(me.Valid);
+            Console.WriteLine(me.Adult);
+            Console.WriteLine(me.Birthday);
+
+            Console.ReadKey();
+
+            Student meButStudent = new Student("Stavros", "Fakiolas", myBirthday, "HatsuneMiku@gmail.com", "12");
+            Teacher meButTeacher = new Teacher("Stavros", "Fakiolas", myBirthdayOlder, "Eurobeat@gmail.com", "Pain and Suffering");
+
+
+            Console.ReadKey();
+            
+            
+
+
+
+
+
+
+           // END OF TEST SECTION FOR PERSON
+            
             #region 1
             // Step 1 create the instances of the objects 
             BaseClass bc = new BaseClass();
@@ -21,6 +49,7 @@ namespace VirtualNewOverride
             Console.WriteLine("bc 1/2");
             bc.Method1();
             bc.Method2();
+            bc.MethodA();
 
             Console.WriteLine("\ndc 1/2");
             dc.Method1();
@@ -57,11 +86,25 @@ namespace VirtualNewOverride
             Console.ReadKey();
         }
 
+        abstract class AbstractBaseClass //cannot create new instance of abstract classes
+        {
+            protected int _abstractMemberItem; //any class that derives from this class can see the data
+            
+            public void MethodA()
+            {
+                Console.WriteLine("Abstract Base - Method A");
+            }
+
+            public abstract void MustImplementThis();
+        }
+
         /// <summary>
         /// A base class which implements 2 functions 
         /// </summary>
-        class BaseClass
+        class BaseClass : AbstractBaseClass
         {
+            int _member;
+            
             #region 5 virtual 
             // step 5 - what effect does the virtual keyword have? 
             // the importance of new vs override in the derived class. 
@@ -78,6 +121,7 @@ namespace VirtualNewOverride
                 Console.WriteLine("Base - Method2");
             }
             #endregion
+            public override void MustImplementThis() { }
 
         }
 
